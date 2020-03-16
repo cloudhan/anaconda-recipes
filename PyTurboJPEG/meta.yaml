@@ -1,0 +1,32 @@
+# should be updated simultaneously
+{% set version = "1.4.0" %}
+{% set git_hash = "92eaa9521fe6ea3b42ccc6ed2fbc76eb57dd5e21" %}
+
+package:
+  name: pyturbojpeg
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/lilohuang/PyTurboJPEG.git
+  git_rev: {{ git_hash }}
+
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - python
+    - libjpeg-turbo
+    - numpy
+
+
+about:
+  home: https://github.com/lilohuang/PyTurboJPEG
+  license: IJG, modified 3-clause BSD and zlib
+  # license_file: LICENSE.md
+  summary: PyTurboJPEG A Python wrapper of libjpeg-turbo for decoding and encoding JPEG image.
